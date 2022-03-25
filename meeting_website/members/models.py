@@ -1,6 +1,5 @@
 from django.contrib.auth.models import User
-
-
+from django.conf import settings
 from django.db import models
 
 User._meta.get_field('email')._unique = True
@@ -8,6 +7,11 @@ User._meta.get_field('email')._unique = True
 
 
 class Person(models.Model):
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        primary_key=True,
+    )
     avatar = models.ImageField(upload_to='avatars', blank=True)
     GENDER_CHOICES = (
         ('M', 'Male'),
