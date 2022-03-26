@@ -1,15 +1,11 @@
 from django.urls import path
-
-
-
 from djoser.views import UserViewSet
 from rest_framework_simplejwt.views import TokenObtainPairView
-
-from .views import TestClass, Category1Details
-
+from .views import TestClass, Category1Details,PersonList
 app_name = "authenticate"
 
 urlpatterns = [
+    path('list/', PersonList.as_view()),
     path('members/', TestClass.as_view()),
     path('clients/<int:id>/match', Category1Details.as_view()),
     path('clients/create', UserViewSet.as_view({'post': 'create'}), name="register"),

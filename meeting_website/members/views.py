@@ -5,10 +5,28 @@ from .serealizers import PersonSerializer
 from .serealizers import OnlyPersonSerializer
 from rest_framework.permissions import IsAuthenticated
 from django.core.mail import send_mail
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import generics
+from django_filters import rest_framework as filters
+
+
+class PersonList(generics.ListAPIView):
+    serializer_class = OnlyPersonSerializer
+    queryset = Person.objects.all()
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_fields = ('gender','first_name','last_name')
+
+
+# Equivalent FilterSet:
+class PersonFilter(filters.FilterSet):
+    class Meta:
+        model = Person
+        fields = ('gender','first_name','last_name')
+
 class TestClass(APIView):
     """Вывод"""
 
-
+    filter_backends = (DjangoFilterBackend,)
     def get(self,request):
         members = Person.objects.filter()
         serializer = PersonSerializer(members, many=True)
@@ -22,6 +40,9 @@ class TestClass(APIView):
             return Response(serializer.data, status=201)
         else:
             return Response(serializer.errors, status=404)
+
+class ModelPersonFilter(TestClass):
+    pass
 
 class Category1Details(APIView):
     #permission_classes = [IsAuthenticated]
