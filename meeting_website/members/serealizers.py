@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
-from .models import Person
-from .models import User
+from .models import Person, User
+
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -16,6 +16,7 @@ class PersonSerializer(serializers.ModelSerializer):
         fields = ['user', 'email', 'gender','first_name','last_name']
 
 class OnlyPersonSerializer(serializers.ModelSerializer):
+    user = serializers.StringRelatedField(read_only=True)
     class Meta:
         model = Person
         fields = "__all__"
