@@ -1,3 +1,3 @@
 web: gunicorn meeting_website.wsgi --log-file - --log-level debug
-python manage.py collectstatic --noinput
-manage.py migrate
+heroku ps:scale web=1
+python manage.py migrate
