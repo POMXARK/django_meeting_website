@@ -11,12 +11,15 @@ class UserSerializer(serializers.ModelSerializer):
 
 class PersonSerializer(serializers.ModelSerializer):
     user = UserSerializer()
+
     class Meta:
         model = Person
-        fields = ['user', 'email', 'gender','first_name','last_name']
+        fields = ['user', 'email', 'gender', 'first_name', 'last_name']
+
 
 class OnlyPersonSerializer(serializers.ModelSerializer):
     user = serializers.StringRelatedField(read_only=True)
+
     class Meta:
         model = Person
         fields = "__all__"
