@@ -1,2 +1,0 @@
-
-web: gunicorn meeting_website.wsgi
