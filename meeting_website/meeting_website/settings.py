@@ -24,11 +24,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-br8qg9r6i(8+@x-1(@zd%#%5s(j)d5*@r2uiz-1ndzv-$b(_r-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['https://mydjango-rest-api.herokuapp.com/','127.0.0.1']
+#DEBUG = True
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
+#ALLOWED_HOSTS = ['https://mydjango-rest-api.herokuapp.com/','127.0.0.1']
+
+ALLOWED_HOSTS = ['localhost']
 # Application definition
 
 INSTALLED_APPS = [
@@ -176,11 +180,19 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'assets/media')
 MEDIA_URL = '/media/'
 IMAGEKIT_DEFAULT_CACHEFILE_STRATEGY = 'imagekit.cachefiles.strategies.Optimistic'
 
+EMAIL_HOST = 'smtp.freesmtpservers.com'
+EMAIL_PORT = 25
+#https://www.wpoven.com/tools/free-smtp-server-for-testing
+
+
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+if DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+else:
+    STATIC_ROOT = BASE_DIR / "staticfiles"
 # Activate Django-Heroku.
 django_heroku.settings(locals())
