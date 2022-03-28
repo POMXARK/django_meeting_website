@@ -1,5 +1,5 @@
 # meeting_website_
-created a model person
+
 
 https://mydjango-rest-api.herokuapp.com/
 
