@@ -9,12 +9,21 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
+import dj_database_url
+import dotenv
 import os
 import django_heroku
 from pathlib import Path
 from datetime import timedelta
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# This line should already exist in your settings.py
+#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# This is new:
+dotenv_file = os.path.join(BASE_DIR, ".env")
+if os.path.isfile(dotenv_file):
+    dotenv.load_dotenv(dotenv_file)
 
 
 # Quick-start development settings - unsuitable for production
@@ -83,12 +92,18 @@ WSGI_APPLICATION = 'meeting_website.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+else:
+    DATABASES = {}
+    db_from_env = dj_database_url.config(conn_max_age=600)
+    DATABASES['default'].update(db_from_env)
 
 
 # Password validation
@@ -194,5 +209,12 @@ if DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 else:
     STATIC_ROOT = BASE_DIR / "staticfiles"
+
+
+
 # Activate Django-Heroku.
+# This should already be in your settings.py
 django_heroku.settings(locals())
+# This is new
+#options = DATABASES['default'].get('OPTIONS', {})
+#options.pop('sslmode', None)
