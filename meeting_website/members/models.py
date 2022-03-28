@@ -41,8 +41,8 @@ class Person(models.Model):
     last_name = models.CharField(max_length=30, blank=True)
     email = models.EmailField(max_length=254, unique=True, blank=True)
     sympathy = models.ManyToManyField('Person', blank=True, symmetrical=False)
-    latitude = models.FloatField(max_length=30, blank=True)
-    longitude = models.FloatField(max_length=30, blank=True)
+    latitude = models.FloatField(max_length=30, blank=True, default=None)
+    longitude = models.FloatField(max_length=30, blank=True, default=None)
 
     def __str__(self):
         return self.first_name + " " + self.last_name
