@@ -30,9 +30,9 @@ DEBUG = False
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
-#ALLOWED_HOSTS = ['https://mydjango-rest-api.herokuapp.com/','127.0.0.1']
+ALLOWED_HOSTS = ['https://mydjango-rest-api.herokuapp.com/']
 
-ALLOWED_HOSTS = ['localhost']
+#ALLOWED_HOSTS = ['localhost']
 # Application definition
 
 INSTALLED_APPS = [
