@@ -1,11 +1,11 @@
 .my-custom-scrollbar {
 position: relative;
-height: 75vh;
+height: 95vh;
 overflow: auto;
 }
 
 @media (orientation: landscape,max-width: 576px) {
-
+ width: 100%;
 }
 
 @media (max-width: 576px) {
