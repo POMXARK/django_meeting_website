@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <title>Api</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'members/style.css' %}">
+      <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+</head>
+<body>
+
+<!-- Background & animion & navbar & title -->
+  <div class="container-fluid ">
+<!-- Background animtion-->
+    <div class="background ">
+       <div class="cube"></div>
+       <div class="cube"></div>
+       <div class="cube"></div>
+       <div class="cube"></div>
+      <div class="cube"></div>
+    </div>
+      </div>
+<!-- header -->
+   <header>
+
+
+<base target="_blank">
+<div class="container">
+<div class="row justify-content-center">
+            <div class="col-12">
+            <h1 class="mt-2 text-white">Django Api Docs</h1>
+                <hr class="mt-0 mb-4 nav-bar">
+                <table class="table table_block ">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                        <th scope="col">Description</th>
+                      <th scope="col">Link</th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                        <td>Регистрация нового участника</td>
+                        <td><a href="/api/clients/create">/api/clients/create</a></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                        <td>Заполнить информацию о пользователе (Включая аватар)</td>
+                        <td><a href="/admin/members/person/">/admin/members/person/</a></td>
+
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Авторизация пользователя</td>
+                      <td><a href="/auth/token/login">/auth/token/login</a></td>
+                    </tr>
+                   <tr>
+                      <th scope="row">4</th>
+                      <td>Оценить участника (GET запрос , с токеном) </td>
+                      <td><a href="/api/clients/1/match">/api/clients/{id}/match</a></td>
+                    </tr>
+                   <tr>
+                      <th scope="row">5</th>
+                      <td>Список участников (GET запрос , с токеном)</td>
+                      <td><a href="/api/list">/api/list</a></td>
+                    </tr>
+                   <tr>
+                      <th scope="row">6</th>
+                      <td>Фильтрация по полу</td>
+                      <td>
+                          <a href="/api/list/?gender=M">/api/list/?gender=M</a> <br>
+                          <a href="/api/list/?gender=F">/api/list/?gender=F</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">7</th>
+                      <td>Фильтрация по имени</td>
+                      <td>
+                          <a href="/api/list/?first_name=Роман">/api/list/?first_name=Роман</a> <br>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">8</th>
+                      <td>Фильтрация по фамилии</td>
+                      <td>
+                          <a href="/api/list/?last_name=Роман">/api/list/?last_name=Бушуев</a> <br>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">9</th>
+                      <td>Люди рядом</td>
+                      <td>
+                          <a href="/api/list/?distance=1500">/api/list/?distance=1500</a> <br>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">10</th>
+                      <td>Админ панель admin:admin</td>
+                      <td>
+                          <a href="/admin/">/admin/</a> <br>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+        </div>
+</div>
+</div>
+        </header>
+</body>
+</html>
