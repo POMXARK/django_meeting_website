@@ -15,8 +15,8 @@ import django_heroku
 from pathlib import Path
 from datetime import timedelta
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-#BASE_DIR = Path(__file__).resolve().parent.parent
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 # This line should already exist in your settings.py
 #BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # This is new:
@@ -32,9 +32,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'django-insecure-br8qg9r6i(8+@x-1(@zd%#%5s(j)d5*@r2uiz-1ndzv-$b(_r-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
 #DEBUG = False
+
+DEBUG = False
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
@@ -153,7 +153,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -204,7 +204,7 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'members/assets/media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'assets/media')
 MEDIA_URL = '/media/'
 IMAGEKIT_DEFAULT_CACHEFILE_STRATEGY = 'imagekit.cachefiles.strategies.Optimistic'
 
@@ -220,15 +220,9 @@ else:
 
 if DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-    STATICFILES_DIRS = (
-        os.path.join(BASE_DIR, 'members/static'),
-    )
 else:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    #STATIC_ROOT = BASE_DIR / "staticfiles"
-    STATICFILES_DIRS = (
-        os.path.join(BASE_DIR, 'assets/media'),
-    )
+    STATIC_ROOT = BASE_DIR / "staticfiles"
+
 
 
 # Activate Django-Heroku.
@@ -237,5 +231,3 @@ django_heroku.settings(locals())
 # This is new
 #options = DATABASES['default'].get('OPTIONS', {})
 #options.pop('sslmode', None)
-
-# Extra places for collectstatic to find static files.
