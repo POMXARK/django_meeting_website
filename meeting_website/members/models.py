@@ -62,9 +62,12 @@ class Person(models.Model):
     latitude = models.FloatField(max_length=30)
     longitude = models.FloatField(max_length=30)
 
-    def image_tag(self):
-        return mark_safe('<img src="/directory/%s" width="150" height="150" />' % (self.avatar))
+    @property
+    def thumbnail_preview(self):
+        if self.avatar:
+            return mark_safe('<img src="{}" width="300" height="300" />'.format(self.avatar.url))
+        return ""
 
-    image_tag.short_description = 'Image'
+
     def __str__(self):
         return self.first_name + " " + self.last_name
