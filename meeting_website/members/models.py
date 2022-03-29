@@ -1,19 +1,12 @@
-from django.contrib.admin import ModelAdmin
 from django.contrib.auth.models import User
 from django.conf import settings
-
 from imagekit.models import ProcessedImageField
-
 from imagekit.processors import ResizeToFill
-
-User._meta.get_field('email')._unique = True
-
 from pilkit.lib import Image
-
-
 from django.db import models
 from django.utils.html import mark_safe
 
+User._meta.get_field('email')._unique = True
 
 
 class Watermark(object):
@@ -32,16 +25,6 @@ class Person(models.Model):
         on_delete=models.CASCADE,
         primary_key=True,
     )
-    avatar = ProcessedImageField(upload_to='avatars',
-                                 processors=[ResizeToFill(400, 400), Watermark()],
-                                 format='JPEG',
-                                 options={'quality': 60}, blank=True)
-
-    @property
-    def thumbnail_preview(self):
-        if self.avatar:
-            return mark_safe('<img src="{}" width="300" height="300" />'.format(self.avatar.url))
-        return ""
 
     GENDER_CHOICES = (
         ('M', 'Male'),
@@ -54,6 +37,17 @@ class Person(models.Model):
     sympathy = models.ManyToManyField('Person', blank=True, symmetrical=False)
     latitude = models.FloatField(max_length=30)
     longitude = models.FloatField(max_length=30)
+
+    avatar = ProcessedImageField(upload_to='avatars',
+                                 processors=[ResizeToFill(400, 400), Watermark()],
+                                 format='JPEG',
+                                 options={'quality': 60}, blank=True)
+
+    @property
+    def thumbnail_preview(self):
+        if self.avatar:
+            return mark_safe('<img src="{}" width="300" height="300" />'.format(self.avatar.url))
+        return ""
 
     def __str__(self):
         return self.first_name + " " + self.last_name
