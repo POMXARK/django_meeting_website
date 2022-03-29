@@ -92,18 +92,31 @@ WSGI_APPLICATION = 'meeting_website.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 import dj_database_url
 
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
+### ADD THIS ###
+DATABASE_URL = 'postgres://zkdwjgoitrhopt:a2078a53f34cefe44de681af906298666a4452f60a65d3eb5ca0e3e46a11129f@ec2-54-173-77-184.compute-1.amazonaws.com:5432/d18g09i0bbscnt'
+
+### CHANGE THIS ###
+DATABASES = {
+    'default': dj_database_url.config(),
+}
+
+### ADD THIS ###
+DATABASES['default'] = dj_database_url.config()
+DATABASES['default'] = dj_database_url.config(default=DATABASE_URL)
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+#}
+#
+#import dj_database_url
+#
+#db_from_env = dj_database_url.config(conn_max_age=600)
+#DATABASES['default'].update(db_from_env)
 
 
 # Password validation
