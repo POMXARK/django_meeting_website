@@ -9,10 +9,6 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-# At the top of the settings
-
-
-
 
 import os
 import django_heroku
@@ -36,7 +32,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-br8qg9r6i(8+@x-1(@zd%#%5s(j)d5*@r2uiz-1ndzv-$b(_r-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
+DEBUG = True
 
 DEBUG = False
 
@@ -58,10 +54,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'django_filters'
-    # Media Cloudinary
-    'cloudinary_storage',
-    'cloudinary',
-
 ]
 
 MIDDLEWARE = [
@@ -105,21 +97,21 @@ import dj_database_url
 ### ADD THIS ###
 DATABASE_URL = 'postgres://rveffnvqjzlakx:d52cde24a4d8d7645171e1a965ce10f6b4928d55f168ff6faf05565f0d4a1591@ec2-3-229-161-70.compute-1.amazonaws.com:5432/dc7h2rq1vl6vh5'
 
-### CHANGE THIS ###
-DATABASES = {
-    'default': dj_database_url.config(),
-}
-
-### ADD THIS ###
-DATABASES['default'] = dj_database_url.config()
-DATABASES['default'] = dj_database_url.config(default=DATABASE_URL)
-
+#### CHANGE THIS ###
 #DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
+#    'default': dj_database_url.config(),
 #}
+#
+#### ADD THIS ###
+#DATABASES['default'] = dj_database_url.config()
+#DATABASES['default'] = dj_database_url.config(default=DATABASE_URL)
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 #
 #import dj_database_url
 #
@@ -160,16 +152,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
-
-# Cloudinary stuff
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'ddnanoczl',
-    'API_KEY': '985824165418233',
-    'API_SECRET': 'B_Lhra-XuWdccHvH6-MV1DeNg70',
-}
-
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
 
 STATIC_URL = 'static/'
 
@@ -249,5 +231,3 @@ django_heroku.settings(locals())
 # This is new
 #options = DATABASES['default'].get('OPTIONS', {})
 #options.pop('sslmode', None)
-
-
