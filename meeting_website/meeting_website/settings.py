@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 # At the top of the settings
 
+
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
 import os
 import django_heroku
 from pathlib import Path
@@ -37,7 +42,7 @@ SECRET_KEY = 'django-insecure-br8qg9r6i(8+@x-1(@zd%#%5s(j)d5*@r2uiz-1ndzv-$b(_r-
 
 DEBUG = False
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 ALLOWED_HOSTS = ['https://mydjango-rest-api.herokuapp.com/']
 
@@ -116,11 +121,7 @@ DATABASES['default'] = dj_database_url.config(default=DATABASE_URL)
 #        'NAME': BASE_DIR / 'db.sqlite3',
 #    }
 #}
-#
-#import dj_database_url
-#
-#db_from_env = dj_database_url.config(conn_max_age=600)
-#DATABASES['default'].update(db_from_env)
+
 
 
 # Password validation
@@ -157,12 +158,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-# Cloudinary stuff
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'ddnanoczl',
-    'API_KEY': '985824165418233',
-    'API_SECRET': 'B_Lhra-XuWdccHvH6-MV1DeNg70',
-}
+
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
@@ -238,12 +234,13 @@ else:
     STATIC_ROOT = BASE_DIR / "staticfiles"
 
 
-
-# Activate Django-Heroku.
-# This should already be in your settings.py
 django_heroku.settings(locals())
-# This is new
-#options = DATABASES['default'].get('OPTIONS', {})
-#options.pop('sslmode', None)
 
+
+
+cloudinary.config(
+  cloud_name = "ddnanoczl",
+  api_key = "985824165418233",
+  api_secret = 'B_Lhra-XuWdccHvH6-MV1DeNg70',
+)
 
