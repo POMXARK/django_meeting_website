@@ -53,7 +53,9 @@ INSTALLED_APPS = [
     'members',
     'rest_framework',
     'rest_framework.authtoken',
-    'django_filters'
+    'django_filters',
+    'cloudinary_storage',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
