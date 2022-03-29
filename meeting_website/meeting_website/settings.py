@@ -10,8 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 # At the top of the settings
-import cloudinary
-import cloudinary_storage
+
 import os
 import django_heroku
 from pathlib import Path
