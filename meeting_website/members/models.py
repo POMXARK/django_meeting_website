@@ -36,13 +36,13 @@ class Person(models.Model):
         ('M', 'Male'),
         ('F', 'Female'),
     )
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, blank=True)
-    first_name = models.CharField(max_length=30, blank=True)
-    last_name = models.CharField(max_length=30, blank=True)
-    email = models.EmailField(max_length=254, unique=True, blank=True)
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+    email = models.EmailField(max_length=254, unique=True)
     sympathy = models.ManyToManyField('Person', blank=True, symmetrical=False)
-    latitude = models.FloatField(max_length=30, blank=True, default=None)
-    longitude = models.FloatField(max_length=30, blank=True, default=None)
+    latitude = models.FloatField(max_length=30)
+    longitude = models.FloatField(max_length=30)
 
     def __str__(self):
         return self.first_name + " " + self.last_name
