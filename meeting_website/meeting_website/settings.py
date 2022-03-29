@@ -239,3 +239,6 @@ CLOUDINARY_STORAGE  =  {
     'API_KEY' :  '985824165418233' ,
     'API_SECRET' :  'B_Lhra-XuWdccHvH6-MV1DeNg70'
 }
+
+MEDIA_URL = '/media/'  # or any prefix you choose
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
