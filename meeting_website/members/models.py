@@ -3,13 +3,23 @@ from django.conf import settings
 
 from imagekit.models import ProcessedImageField
 
-from django.db import models
-
 from imagekit.processors import ResizeToFill
 
 User._meta.get_field('email')._unique = True
 
 from pilkit.lib import Image
+
+from django.db import models
+from django.utils.html import mark_safe
+
+
+class Book(models.Model):
+        image = models.ImageField()
+
+        def image_tag(self):
+                if self.image != '':
+                    return mark_safe('<img src="%s%s" width="150" height="150" />' % (f'{settings.MEDIA_URL}', self.image))
+
 
 
 class Watermark(object):
