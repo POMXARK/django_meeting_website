@@ -10,11 +10,20 @@ User._meta.get_field('email')._unique = True
 
 from pilkit.lib import Image
 
+
 from django.db import models
 from django.utils.html import mark_safe
 
 
-from imagekit.admin import AdminThumbnail
+class Post(models.Model):
+    title = models.CharField(max_length=255)
+    thumbnail = models.ImageField(upload_to='post/thumbnail/%Y/%m/%d/', null=True, blank=True)
+
+    @property
+    def thumbnail_preview(self):
+        if self.thumbnail:
+            return mark_safe('<img src="{}" width="300" height="300" />'.format(self.thumbnail.url))
+        return ""
 
 
 
