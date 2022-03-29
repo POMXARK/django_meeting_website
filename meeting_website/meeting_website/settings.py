@@ -95,7 +95,7 @@ WSGI_APPLICATION = 'meeting_website.wsgi.application'
 import dj_database_url
 
 ### ADD THIS ###
-DATABASE_URL = 'postgres://zkdwjgoitrhopt:a2078a53f34cefe44de681af906298666a4452f60a65d3eb5ca0e3e46a11129f@ec2-54-173-77-184.compute-1.amazonaws.com:5432/d18g09i0bbscnt'
+DATABASE_URL = 'postgres://rveffnvqjzlakx:d52cde24a4d8d7645171e1a965ce10f6b4928d55f168ff6faf05565f0d4a1591@ec2-3-229-161-70.compute-1.amazonaws.com:5432/dc7h2rq1vl6vh5'
 
 ### CHANGE THIS ###
 DATABASES = {
