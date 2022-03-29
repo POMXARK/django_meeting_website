@@ -15,8 +15,8 @@ import django_heroku
 from pathlib import Path
 from datetime import timedelta
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-
+#BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # This line should already exist in your settings.py
 #BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # This is new:
@@ -153,7 +153,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -221,7 +221,8 @@ else:
 if DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 else:
-    STATIC_ROOT = BASE_DIR / "staticfiles"
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    #STATIC_ROOT = BASE_DIR / "staticfiles"
 
 
 
@@ -231,3 +232,8 @@ django_heroku.settings(locals())
 # This is new
 #options = DATABASES['default'].get('OPTIONS', {})
 #options.pop('sslmode', None)
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
