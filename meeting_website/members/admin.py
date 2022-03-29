@@ -5,7 +5,7 @@ from django.contrib import admin
 
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title')
+    list_display = ('first_name','last_name')
     readonly_fields = ('thumbnail_preview',)
 
     def thumbnail_preview(self, obj):
@@ -14,4 +14,5 @@ class PostAdmin(admin.ModelAdmin):
     thumbnail_preview.short_description = 'Thumbnail Preview'
     thumbnail_preview.allow_tags = True
 
-admin.site.register([Person,PostAdmin])
+admin.site.register(Person, PostAdmin)
+#admin.site.register([Person,PostAdmin])
