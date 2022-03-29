@@ -37,6 +37,12 @@ class Person(models.Model):
                                  format='JPEG',
                                  options={'quality': 60}, blank=True)
 
+    @property
+    def thumbnail_preview(self):
+        if self.avatar:
+            return mark_safe('<img src="{}" width="300" height="300" />'.format(self.avatar.url))
+        return ""
+
     GENDER_CHOICES = (
         ('M', 'Male'),
         ('F', 'Female'),
@@ -48,13 +54,6 @@ class Person(models.Model):
     sympathy = models.ManyToManyField('Person', blank=True, symmetrical=False)
     latitude = models.FloatField(max_length=30)
     longitude = models.FloatField(max_length=30)
-
-    @property
-    def thumbnail_preview(self):
-        if self.avatar:
-            return mark_safe('<img src="{}" width="300" height="300" />'.format(self.avatar.url))
-        return ""
-
 
     def __str__(self):
         return self.first_name + " " + self.last_name
