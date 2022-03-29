@@ -204,7 +204,7 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'assets/media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'members/assets/media')
 MEDIA_URL = '/media/'
 IMAGEKIT_DEFAULT_CACHEFILE_STRATEGY = 'imagekit.cachefiles.strategies.Optimistic'
 
@@ -220,10 +220,15 @@ else:
 
 if DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    STATICFILES_DIRS = (
+        os.path.join(BASE_DIR, 'members/static'),
+    )
 else:
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     #STATIC_ROOT = BASE_DIR / "staticfiles"
-
+    STATICFILES_DIRS = (
+        os.path.join(BASE_DIR, 'assets/media'),
+    )
 
 
 # Activate Django-Heroku.
@@ -234,6 +239,3 @@ django_heroku.settings(locals())
 #options.pop('sslmode', None)
 
 # Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
