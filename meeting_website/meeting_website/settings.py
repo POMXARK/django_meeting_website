@@ -234,3 +234,8 @@ django_heroku.settings(locals())
 #options = DATABASES['default'].get('OPTIONS', {})
 #options.pop('sslmode', None)
 
+CLOUDINARY_STORAGE  =  {
+    'CLOUD_NAME' :  'ddnanoczl' ,
+    'API_KEY' :  '985824165418233' ,
+    'API_SECRET' :  'B_Lhra-XuWdccHvH6-MV1DeNg70'
+}
