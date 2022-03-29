@@ -1,3 +1,4 @@
+from django.contrib.admin import ModelAdmin
 from django.contrib.auth.models import User
 from django.conf import settings
 
@@ -13,12 +14,9 @@ from django.db import models
 from django.utils.html import mark_safe
 
 
-class Book(models.Model):
-        image = models.ImageField()
+from imagekit.admin import AdminThumbnail
 
-        def image_tag(self):
-                if self.image != '':
-                    return mark_safe('<img src="%s%s" width="150" height="150" />' % (f'{settings.MEDIA_URL}', self.image))
+
 
 
 
@@ -42,6 +40,7 @@ class Person(models.Model):
                                  processors=[ResizeToFill(400, 400), Watermark()],
                                  format='JPEG',
                                  options={'quality': 60}, blank=True)
+
     GENDER_CHOICES = (
         ('M', 'Male'),
         ('F', 'Female'),
@@ -54,5 +53,9 @@ class Person(models.Model):
     latitude = models.FloatField(max_length=30)
     longitude = models.FloatField(max_length=30)
 
+    def image_tag(self):
+        return mark_safe('<img src="/directory/%s" width="150" height="150" />' % (self.avatar))
+
+    image_tag.short_description = 'Image'
     def __str__(self):
         return self.first_name + " " + self.last_name
