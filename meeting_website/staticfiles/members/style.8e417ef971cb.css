@@ -4,30 +4,16 @@ height: 570px;
 overflow: auto;
 }
 
-@media (max-width: 576px) {
-    html { font-size: 0.7rem; }
-    th { font-size: 1rem; }
-}
-@media (min-width: 768px) {
-    html { font-size: 0.8rem; }
-    th { font-size: 1rem; }
-
-}
-@media (min-width: 992px) {
-    html { font-size: 0.8rem; }
-    th { font-size: 1rem; }
-}
-@media (min-width: 1200px) {
-    html { font-size: 0.8rem; }
-    th { font-size: 1rem; }
+.table_full {
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
 }
 
 .table-wrapper-scroll-y {
 display: block;
 }
-table tr td, table tr th{
-    background-color: rgba(255,255,255,0.9) !important;
-}
+
 .nav-bar {
   border-bottom: 1px solid rgba(255,255,255,.25);
 }

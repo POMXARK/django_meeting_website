@@ -3,6 +3,25 @@ position: relative;
 height: 570px;
 overflow: auto;
 }
+
+@media (max-width: 576px) {
+    html { font-size: 0.7rem; }
+    th { font-size: 1rem; }
+}
+@media (min-width: 768px) {
+    html { font-size: 0.8rem; }
+    th { font-size: 1rem; }
+
+}
+@media (min-width: 992px) {
+    html { font-size: 0.8rem; }
+    th { font-size: 1rem; }
+}
+@media (min-width: 1200px) {
+    html { font-size: 0.8rem; }
+    th { font-size: 1rem; }
+}
+
 .table-wrapper-scroll-y {
 display: block;
 }
