@@ -12,7 +12,7 @@ overflow: auto;
 }
 
 @media (max-width: 576px) {
-    html { font-size: 0.7rem; }
+    html { font-size: 0.6rem; }
     th { font-size: 1rem; }
 }
 @media (min-width: 768px) {
