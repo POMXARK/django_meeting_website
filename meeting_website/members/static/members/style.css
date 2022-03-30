@@ -3,7 +3,7 @@ border: 0;
 }
 .my-custom-scrollbar {
 position: relative;
-height: 75vh;
+height: 80vh;
 overflow: auto;
 }
 
