@@ -1,6 +1,4 @@
-.subtable {
-border: 0;
-}
+
 .my-custom-scrollbar {
 position: relative;
 height: 75vh;
@@ -34,7 +32,7 @@ overflow: auto;
 display: block;
 }
 
-table.table{
+table.table {
     background-color: rgba(255,255,255,0.9) !important;
 
 }

@@ -1,6 +1,16 @@
-.subtable {
-border: 0;
+table tr:nth-child(even) {
+    background: none;
 }
+
+table.subTable tr {
+    background: none;
+}
+
+td {
+    background: none;
+}
+
+
 .my-custom-scrollbar {
 position: relative;
 height: 75vh;
@@ -34,12 +44,17 @@ overflow: auto;
 display: block;
 }
 
-table.table{
+
+
+
+table tr td, table tr th{
     background-color: rgba(255,255,255,0.9) !important;
 
+    .subtable {
+    background-color: rgba(255,255,255,0.9) !important;
+    }
+
 }
-
-
 .nav-bar {
   border-bottom: 1px solid rgba(255,255,255,.25);
 }
