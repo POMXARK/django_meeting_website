@@ -11,6 +11,9 @@ overflow: auto;
 
 }
 
+
+
+
 @media (max-width: 576px) {
     html { font-size: 0.6rem; }
     th { font-size: 1rem; }

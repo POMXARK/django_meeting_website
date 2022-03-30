@@ -1,0 +1,35 @@
+{% load index %}
+<table class="table table-bordered mb-0 ">
+    <thead>
+    <tr>
+        {% for el in table_title %}
+        <th scope="col"> {{ el }}</th>
+        {% endfor %}
+    </tr>
+
+    </thead>
+    <tbody>
+
+    {% for el in table_content %}
+    <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        {% if el|length < 3 %}
+        <td>{{el|index:0}}</td>
+        <td><a href="{{el|index:1}}">{{el|index:1}}</a></td>
+        {% else %}
+        <td style="padding: 0; border: 0;">
+            <table class="subtable" style="width: 100%; border: 0; ">
+                <tr>
+                    <td class="col-md-10">{{el|index:0}}</td>
+                    <td class="text-center col-md-2"><a class="btn btn-primary" href="https://reqbin.com/{{el|index:2}}"
+                                                        role="button">Demo</a></td>
+                </tr>
+            </table>
+        </td>
+        <td><a href="{{el|index:1}}">{{el|index:1}}</a></td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
